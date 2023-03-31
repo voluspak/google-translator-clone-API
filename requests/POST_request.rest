@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/translate
+Content-Type: application/json
+
+{
+  "fromLanguage": "es",
+  "toLanguage": "en",
+  "text": "Esto es un texto de prueba que se supone debes traducir al inglés"
+}

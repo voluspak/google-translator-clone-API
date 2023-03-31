@@ -60,10 +60,10 @@ async function translate ({ fromLanguage, toLanguage, text }) {
   return completion.data.choices[0]?.message?.content
 }
 
-translateRouter.post('/', (request, response) => {
+translateRouter.post('/', async (request, response) => {
   const { fromLanguage, toLanguage, text } = request.body
 
-  const translation = translate({ fromLanguage, toLanguage, text })
+  const translation = await translate({ fromLanguage, toLanguage, text })
 
   response.send({ translate: translation })
 })
