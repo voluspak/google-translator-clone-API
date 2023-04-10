@@ -1,0 +1,2 @@
+POST http://localhost:5000/api/translate
+Content-Type: application/json

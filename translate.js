@@ -62,10 +62,13 @@ async function translate ({ fromLanguage, toLanguage, text }) {
 
 translateRouter.post('/', async (request, response) => {
   const { fromLanguage, toLanguage, text } = request.body
-
-  const translation = await translate({ fromLanguage, toLanguage, text })
-
-  response.send({ translate: translation })
+  try {
+    const translation = await translate({ fromLanguage, toLanguage, text })
+    response.send({ translate: translation })
+  } catch (error) {
+    console.error(error)
+    response.send(error.name)
+  }
 })
 
 module.exports = { translateRouter }
