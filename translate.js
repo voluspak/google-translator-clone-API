@@ -5,7 +5,6 @@ const translateRouter = require('express').Router()
 const SUPPORTED_LANGUAGES = require('./languages')
 
 const apiKey = process.env.API_KEY
-console.log(apiKey ? 'Se lee la API_KEY' : 'No se lee la API_KEY')
 const configuration = new Configuration({ apiKey })
 const openai = new OpenAIApi(configuration)
 
@@ -65,7 +64,6 @@ translateRouter.post('/', async (request, response) => {
 
   try {
     const translation = await translate({ fromLanguage, toLanguage, text }) ?? 'No se pudo obtener la traducción'
-    console.log(translation)
     response.send({ translate: translation })
   } catch (error) {
     console.error(error)
